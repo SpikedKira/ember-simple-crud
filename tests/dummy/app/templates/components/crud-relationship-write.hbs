@@ -1,0 +1,30 @@
+{{#if componentExists}}
+
+    {{component (concat modelName "-write")
+        selectedRelationship=selectedRelationship
+        modelName=modelName
+        label=label
+        componentExists=false
+        models=models
+        onchange=(action "change")
+    }}
+
+{{else}}
+
+    {{#if label}}
+        <label for={{inputId}}>
+            {{label}}
+        </label>
+    {{/if}}
+
+    {{#power-select
+        options=models
+        selected=selectedRelationship
+        searchEnabled=false
+        onchange=(action "change")
+        as |model|
+    }}
+        {{model._identifier}}
+    {{/power-select}}
+
+{{/if}}

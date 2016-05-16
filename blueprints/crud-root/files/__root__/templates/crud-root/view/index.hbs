@@ -1,0 +1,22 @@
+<h3>{{modelName}}: {{content._identifier}}</h3>
+
+<ul>
+    {{#each attributes as |attribute|}}
+        <li>{{attribute}}: {{get content attribute}}</li>
+    {{/each}}
+
+    {{#each relationships as |relationship|}}
+        <li>
+            {{relationship.name}}: {{component "crud-relationship-read"
+                    selectedRelationship=(get content relationship.name)
+                }}
+        </li>
+    {{/each}}
+</ul>
+
+<div>
+    <button type="button" {{action "editRecord"}}>Edit</button>
+    <button type="button" {{action "deleteRecord"}}>Delete</button>
+</div>
+
+{{outlet}}

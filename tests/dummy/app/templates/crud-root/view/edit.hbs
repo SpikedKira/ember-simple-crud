@@ -1,0 +1,26 @@
+<h3>{{modelName}}: {{model._identifier}}</h3>
+
+<form>
+    {{#each attributes as |attribute|}}
+        <label>{{attribute}}</label>
+        {{input
+            value=(mut (get model attribute))
+        }}
+    {{/each}}
+
+    {{#each relationships as |relationship|}}
+        {{component "crud-relationship-write"
+            selectedRelationship=(get model relationship.name)
+            modelName=relationship.model
+            label=relationship.name
+            onchange=(action (mut (get model relationship.name)))
+        }}
+    {{/each}}
+
+    <div>
+        <button type="button" {{action "saveEditRecord"}}>Save</button>
+        <button type="button" {{action "cancelEditRecord"}}>Cancel</button>
+    </div>
+</form>
+
+{{outlet}}
