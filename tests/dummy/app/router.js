@@ -6,6 +6,14 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('test-one', function() {
+    this.route('view', {
+      path: ':test-one_id'
+    }, function() {
+      this.route('edit');
+    });
+    this.route('new');
+  });
 });
 
 export default Router;
