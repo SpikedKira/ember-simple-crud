@@ -4,22 +4,22 @@ This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+* `ember install ember-simple-crud`
+* `ember g crud-root`
 
-## Running
+## Usage
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `ember g crud modelName`
 
-## Running Tests
+Where `modelName` is the name of your model.  This will also generate routes for you.
+You can pass in a path just as you would to the `ember g route` blueprint.
 
-* `ember test`
-* `ember test --server`
+If your model needs special handling when showing it as a relationship, simply create a component called `modelName-read` or `modelName-write` and it will be picked up automatically.
 
-## Building
+If your model doesn't have a property called `name`, create a new property called `_identifier` and alias it to a meaningful property on your model.
 
-* `ember build`
+## Requirements
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+* ember-power-select
+
+While we use ember-power-select by default, you can easily swap this for anything you want inside of templates/components/crud-relationship-write.hbs.
