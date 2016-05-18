@@ -29,7 +29,6 @@ export default Ember.Component.extend({
         'modelName',
         function() {
             const store = this.get( 'targetObject.store' );
-            console.log( this.get( 'modelName' ) );
             return store.findAll( this.get( 'modelName' ) );
         }
     )

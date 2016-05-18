@@ -1,5 +1,4 @@
 import { moduleFor, test } from 'ember-qunit';
-import startApp from '../../../helpers/start-app';
 import sinon from 'sinon';
 import Ember from 'ember';
 import DS from 'ember-data';
