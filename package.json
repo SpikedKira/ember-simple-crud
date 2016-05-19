@@ -1,6 +1,6 @@
 {
   "name": "ember-simple-crud",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "ember-cli addon adding blueprints for CRUD generation",
   "directories": {
     "doc": "doc",
@@ -41,7 +41,9 @@
     "ember-try": "0.0.6"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "crud",
+    "blueprint"
   ],
   "dependencies": {
     "chalk": "1.1.0",
