@@ -4,13 +4,22 @@
         selectedRelationship=selectedRelationship
         modelName=modelName
         componentExists=false
+        kind=kind
     }}
 
 {{else}}
 
-    {{#each selectedRelationship as |relationship index|}}
-        {{~if index ", "~}}
-        {{~relationship._identifier~}}
-    {{/each}}
+    {{#unless isMultiple}}
+
+        {{selectedRelationship._identifier}}
+
+    {{else}}
+
+        {{#each selectedRelationship as |relationship index|}}
+            {{~if index ", "~}}
+            {{~relationship._identifier~}}
+        {{/each}}
+
+    {{/unless}}
 
 {{/if}}

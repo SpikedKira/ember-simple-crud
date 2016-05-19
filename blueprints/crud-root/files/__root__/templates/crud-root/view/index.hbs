@@ -12,6 +12,7 @@
         <li>
             {{relationship.name}}: {{component "crud-relationship-read"
                     selectedRelationship=(get content relationship.name)
+                    kind=relationship.kind
                 }}
         </li>
     {{/each}}

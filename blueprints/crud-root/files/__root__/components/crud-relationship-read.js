@@ -6,6 +6,8 @@ export default Ember.Component.extend({
 
     layout,
 
+    kind: null,
+
     modelName: null,
 
     selectedRelationship: null,
@@ -15,6 +17,13 @@ export default Ember.Component.extend({
         function() {
             const modelName = this.get( 'modelName' );
             return Ember.getOwner( this ).hasRegistration( 'component:' + modelName + '-read' );
+        }
+    ),
+
+    isMultiple: Ember.computed(
+        'kind',
+        function() {
+            return this.get( 'kind' ) === "hasMany";
         }
     )
 });
