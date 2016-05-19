@@ -8,6 +8,9 @@
 
 {{else}}
 
-    {{selectedRelationship._identifier}}
+    {{#each selectedRelationship as |relationship index|}}
+        {{~if index ", "~}}
+        {{~relationship._identifier~}}
+    {{/each}}
 
 {{/if}}

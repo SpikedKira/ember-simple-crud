@@ -17,14 +17,25 @@
         </label>
     {{/if}}
 
-    {{#power-select
-        options=models
-        selected=selectedRelationship
-        searchEnabled=false
-        onchange=(action "change")
-        as |model|
-    }}
-        {{model._identifier}}
-    {{/power-select}}
+    {{#unless isMultiple}}
+        {{#power-select
+            options=models
+            selected=selectedRelationship
+            searchEnabled=false
+            onchange=(action "change")
+            as |model|
+        }}
+            {{model._identifier}}
+        {{/power-select}}
+    {{else}}
+        {{#power-select-multiple
+            options=models
+            selected=selectedRelationship
+            onchange=(action "change")
+            as |model|
+        }}
+            {{model._identifier}}
+        {{/power-select-multiple}}
+    {{/unless}}
 
 {{/if}}

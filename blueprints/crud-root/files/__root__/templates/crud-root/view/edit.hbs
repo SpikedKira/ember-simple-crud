@@ -1,4 +1,7 @@
-<h3>{{modelName}}: {{model._identifier}}</h3>
+<h3>
+    {{modelName}}
+    <span>{{model._identifier}}</span>
+</h3>
 
 <form>
     {{#each attributes as |attribute|}}
@@ -13,6 +16,7 @@
             selectedRelationship=(get model relationship.name)
             modelName=relationship.model
             label=relationship.name
+            kind=relationship.kind
             onchange=(action (mut (get model relationship.name)))
         }}
     {{/each}}

@@ -11,6 +11,8 @@ export default Ember.Component.extend({
 
     layout,
 
+    kind: null,
+
     label: null,
 
     modelName: null,
@@ -22,6 +24,13 @@ export default Ember.Component.extend({
         function() {
             const modelName = this.get( 'modelName' );
             return Ember.getOwner( this ).hasRegistration( 'component:' + modelName + '-write' );
+        }
+    ),
+
+    isMultiple: Ember.computed(
+        'kind',
+        function() {
+            return this.get( 'kind' ) === 'hasMany';
         }
     ),
 

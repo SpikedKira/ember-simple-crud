@@ -10,7 +10,9 @@ export default Ember.Controller.extend({
         },
 
         saveCreateRecord() {
-            this.get( 'model' ).save();
+            this.get( 'model' ).save().then( () => {
+                window.history.back();
+            });
         },
 
         cancelEditRecord() {
@@ -18,7 +20,9 @@ export default Ember.Controller.extend({
         },
 
         saveEditRecord() {
-            this.get( 'model' ).save();
+            this.get( 'model' ).save().then( () => {
+                window.history.back();
+            });
         },
 
         editRecord() {
@@ -69,7 +73,8 @@ export default Ember.Controller.extend({
             Ember.get( model, 'relationshipsByName' ).forEach( ( val, key ) => {
                 relationships.push({
                     name: key,
-                    model: val.type
+                    model: val.type,
+                    kind: val.kind
                 });
             });
 
