@@ -1,5 +1,9 @@
 import Ember from 'ember';
 
+/**
+ * @module
+ * @augments ember/Route
+ */
 export default Ember.Route.extend({
 
     model: function( params ) {

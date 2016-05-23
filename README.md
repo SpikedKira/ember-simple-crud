@@ -1,6 +1,12 @@
 # Ember-simple-crud
 
-This README outlines the details of collaborating on this Ember addon.
+This addon is designed to enable rapid prototyping and scaffolding for large applications.  The idea is to interact with models instantly without stopping to build views.
+While the views are important to an end-product, when starting a new project it is beneficial to get all the models in place and interacting before an entire team jumps in to work on the user interaction parts of the application.
+Ember-Simple-CRUD allows for immediate interaction with models while providing a path toward your final product with controllers, routes, and templates strategically placed for replacement and enhancement.
+
+## Demo
+
+http://spikedkira.github.io/ember-simple-crud
 
 ## Installation
 
