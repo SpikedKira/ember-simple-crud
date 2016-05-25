@@ -40,7 +40,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.baseURL = '/ember-simple-crud';
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    }
   }
 
   return ENV;

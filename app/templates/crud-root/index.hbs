@@ -1,0 +1,15 @@
+<h3>{{modelName}}</h3>
+
+<ul>
+    {{#each content as |model|}}
+        <li>
+            {{#link-to (concat modelName ".view") model.id}}{{model._identifier}}{{/link-to}}
+        </li>
+    {{/each}}
+</ul>
+
+<div>
+    <button type="button" {{action "newRecord"}}>New</button>
+</div>
+
+{{outlet}}

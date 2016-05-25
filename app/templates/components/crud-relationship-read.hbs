@@ -1,0 +1,25 @@
+{{#if componentExists}}
+
+    {{component (concat modelName "-read")
+        selectedRelationship=selectedRelationship
+        modelName=modelName
+        componentExists=false
+        kind=kind
+    }}
+
+{{else}}
+
+    {{#unless isMultiple}}
+
+        {{selectedRelationship._identifier}}
+
+    {{else}}
+
+        {{#each selectedRelationship as |relationship index|}}
+            {{~if index ", "~}}
+            {{~relationship._identifier~}}
+        {{/each}}
+
+    {{/unless}}
+
+{{/if}}
