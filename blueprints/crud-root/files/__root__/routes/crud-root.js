@@ -22,14 +22,16 @@ export default Ember.Route.extend({
         if ( viewName === "new" ) {
             return this.store.createRecord( modelName );
         }
+
+        return this._super( ...arguments );
     },
 
     deactivate: function() {
         const routeName = this.get( 'routeName' );
         const viewName = routeName.split('.').slice(1).join('.');
 
-        if ( viewName === "new" ) {
-            this.get( 'controller' ).get( 'model' ).deleteRecord();
+        if ( viewName === "new" || viewName === "view.edit" ) {
+            this.get( 'controller' ).get( 'model' ).rollbackAttributes();
         }
     }
 });
