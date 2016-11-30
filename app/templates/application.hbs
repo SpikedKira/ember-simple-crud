@@ -20,12 +20,6 @@
 <span class='console'>ember new demo</span>
 <span class='console'>cd demo</span>
 
-<h4>Upgrade Ember and Ember-Data</h4>
-<span class='console'>bower install ember#2.3.0 --save</span>
-<span class='console'>bower install ember-cli/ember-cli-shims#0.1.0 --save</span>
-<span class='console'>bower uninstall ember-data --save</span>
-<span class='console'>npm install ember-data@2.4.0 --save-dev</span>
-
 <h3>Using Ember-Simple-CRUD</h3>
 <h4>Install Ember-Simple-CRUD</h4>
 <span class='console'>ember install ember-simple-crud</span>
@@ -97,34 +91,15 @@ export default CRUDRoot.extend({
 <h4>Install Ember-CLI-Mirage</h4>
 <span class='console'>ember install ember-cli-mirage</span>
 
+<h4>Create Mirage Models</h4>
+<span class='console'>ember g mirage-model company</span>
+<span class='console'>ember g mirage-model employee</span>
+<span class='console'>ember g mirage-model product</span>
+
 <h4>Create Factories for Our Models</h4>
-<span class='console'>ember g factory company</span>
-<span class='console'>ember g factory employee</span>
-<span class='console'>ember g factory product</span>
-
-<h4>Setup Ember to Use REST</h4>
-<blockquote>
-    In order to leverage some code shortcuts in Mirage, we need to switch Ember's default JSON-API to REST.
-</blockquote>
-<span class='console'>ember g adapter application</span>
-<span class='console'>ember g serializer application</span>
-<span class='code'>adapters/application.js
-    <pre>
-import DS from 'ember-data';
-
-export default DS.RESTAdapter.extend({
-});
-    </pre>
-</span>
-
-<span class='code'>serializers/application.js
-    <pre>
-import DS from 'ember-data';
-
-export default DS.RESTSerializer.extend({
-});
-    </pre>
-</span>
+<span class='console'>ember g mirage-factory company</span>
+<span class='console'>ember g mirage-factory employee</span>
+<span class='console'>ember g mirage-factory product</span>
 
 <h4>Setup the Factories</h4>
 <span class='code'>mirage/factories/company.js
@@ -190,17 +165,20 @@ export default Mirage.Factory.extend({
 export default function() {
   this.get( '/companies' );
   this.get( '/companies/:id' );
-  this.put( '/companies/:id' );
+  this.patch( '/companies/:id' );
+  this.delete( '/companies/:id' );
   this.post( '/companies' );
 
   this.get( '/employees' );
   this.get( '/employees/:id' );
-  this.put( '/employees/:id' );
+  this.patch( '/employees/:id' );
+  this.delete( '/employees/:id' );
   this.post( '/employees' );
 
   this.get( '/products' );
   this.get( '/products/:id' );
-  this.put( '/products/:id' );
+  this.patch( '/products/:id' );
+  this.delete( '/products/:id' );
   this.post( '/products' );
 }
     </pre>

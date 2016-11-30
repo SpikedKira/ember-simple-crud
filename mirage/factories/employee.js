@@ -1,6 +1,6 @@
-import Mirage, {faker} from 'ember-cli-mirage';
+import { Factory, faker } from 'ember-cli-mirage';
 
-export default Mirage.Factory.extend({
+export default Factory.extend({
   firstName() {
       return faker.name.firstName();
   },
@@ -11,5 +11,5 @@ export default Mirage.Factory.extend({
 
   company() {
       return faker.random.number( 4 ) + 1;
-  }
+  }    
 });

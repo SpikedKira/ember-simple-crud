@@ -1,33 +1,78 @@
 import Ember from 'ember';
 
+/**
+ * @module
+ * @augments ember/Controller
+ */
 export default Ember.Controller.extend({
+
+    // -------------------------------------------------------------------------
+    // Actions
 
     actions: {
 
+        /**
+         * Cancel the creation of a new record
+         *
+         * @function actions:cancelCreateRecord
+         * @returns {undefined}
+         */
         cancelCreateRecord() {
             // created record is deleted by route.deactivate
             window.history.back();
         },
 
+        /**
+         * Save the newly created record
+         *
+         * @function actions:saveCreateRecord
+         * @returns {undefined}
+         */
         saveCreateRecord() {
-            this.get( 'model' ).save();
+            this.get( 'model' ).save().then( () => {
+                window.history.back();
+            });
         },
 
+        /**
+         * Cancel editing of record
+         *
+         * @function actions:cancelEditRecord
+         * @returns {undefined}
+         */
         cancelEditRecord() {
             window.history.back();
         },
 
+        /**
+         * Save the editted record
+         *
+         * @function actions:saveEditRecord
+         * @returns {undefined}
+         */
         saveEditRecord() {
             this.get( 'model' ).save().then( () => {
                 window.history.back();
             });
         },
 
+        /**
+         * Transition to route for editting the current record
+         *
+         * @function actions:editRecord
+         * @returns {undefined}
+         */
         editRecord() {
             const modelName = this.get( 'modelName' );
             this.transitionToRoute( modelName + ".view.edit", this.get( 'model' ) );
         },
 
+        /**
+         * Delete the current record
+         *
+         * @function actions:deleteRecord
+         * @returns {undefined}
+         */
         deleteRecord() {
             const model = this.get( 'model' );
             const modelName = this.get( 'modelName' );
@@ -40,12 +85,27 @@ export default Ember.Controller.extend({
             }
         },
 
+        /**
+         * Transition to a route for a new record
+         *
+         * @function actions:newRecord
+         * @returns {undefined}
+         */
         newRecord() {
             const modelName = this.get( 'modelName' );
             this.transitionToRoute( modelName + '.new' );
         }
     },
 
+    // -------------------------------------------------------------------------
+    // Methods
+
+    /**
+     * The name of the model for the model instance
+     *
+     * @function
+     * @returns {String}
+     */
     modelName: Ember.computed(
         function() {
             const model = this.get( 'model' );
@@ -62,6 +122,12 @@ export default Ember.Controller.extend({
         }
     ),
 
+    /**
+     * An array of objects that represent model relationships
+     *
+     * @function
+     * @returns {Object[]}
+     */
     relationships: Ember.computed(
         'modelName',
         function() {
@@ -75,10 +141,17 @@ export default Ember.Controller.extend({
                     kind: val.kind
                 });
             });
+
             return relationships;
         }
     ),
 
+    /**
+     * An array of attribute names
+     *
+     * @function
+     * @returns {Object[]}
+     */
     attributes: Ember.computed(
         'modelName',
         function() {
