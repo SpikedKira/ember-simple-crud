@@ -5,7 +5,7 @@ export default Factory.extend({
       return faker.company.companyName();
   },
 
-  products() {
+  productIds() {
       const numbers = [];
       let n = 5;
       while( n-- ) {

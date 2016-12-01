@@ -111,7 +111,7 @@ export default Mirage.Factory.extend({
       return faker.company.companyName();
   },
 
-  products() {
+  productIds() {
       const numbers = [];
       let n = 5;
       while( n-- ) {
@@ -136,7 +136,7 @@ export default Mirage.Factory.extend({
       return faker.name.lastName();
   },
 
-  company() {
+  companyId() {
       return faker.random.number( 4 ) + 1;
   }
 });
@@ -188,9 +188,9 @@ export default function() {
 <span class='code'>mirage/scenarios/default.js
     <pre>
 export default function( server ) {
+  server.createList( 'product', 20 );
   server.createList( 'company', 5 );
   server.createList( 'employee', 50 );
-  server.createList( 'product', 20 );
 }
     </pre>
 </span>

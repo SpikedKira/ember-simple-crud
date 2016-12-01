@@ -9,7 +9,7 @@ export default Factory.extend({
       return faker.name.lastName();
   },
 
-  company() {
+  companyId() {
       return faker.random.number( 4 ) + 1;
-  }    
+  }
 });

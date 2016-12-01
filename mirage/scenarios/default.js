@@ -9,7 +9,7 @@ export default function( server ) {
 
   // server.createList('post', 10);
 
+  server.createList( 'product', 20 );
   server.createList( 'company', 5 );
   server.createList( 'employee', 50 );
-  server.createList( 'product', 20 );
 }
