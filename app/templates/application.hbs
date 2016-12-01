@@ -96,6 +96,27 @@ export default CRUDRoot.extend({
 <span class='console'>ember g mirage-model employee</span>
 <span class='console'>ember g mirage-model product</span>
 
+<h4>Setup the Models</h4>
+<span class='code'>mirage/models/company.js
+    <pre>
+import { Model, hasMany } from 'ember-cli-mirage';
+
+export default Model.extend({
+    products: hasMany()
+});
+    </pre>
+</span>
+
+<span class='code'>mirage/models/employee.js
+    <pre>
+import { Model, belongsTo } from 'ember-cli-mirage';
+
+export default Model.extend({
+    company: belongsTo()
+});
+    </pre>
+</span>
+
 <h4>Create Factories for Our Models</h4>
 <span class='console'>ember g mirage-factory company</span>
 <span class='console'>ember g mirage-factory employee</span>
