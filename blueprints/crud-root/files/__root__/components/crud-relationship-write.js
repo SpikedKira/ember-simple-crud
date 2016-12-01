@@ -7,6 +7,8 @@ import layout from '../templates/components/crud-relationship-write';
  */
 export default Ember.Component.extend({
 
+    store: Ember.inject.service( 'store' ),
+
     // -------------------------------------------------------------------------
     // Attributes
 
@@ -102,7 +104,7 @@ export default Ember.Component.extend({
     models: Ember.computed(
         'modelName',
         function() {
-            const store = this.get( 'targetObject.store' );
+            const store = this.get( 'store' );
             return store.findAll( this.get( 'modelName' ) );
         }
     )
